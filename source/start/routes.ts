@@ -19,7 +19,12 @@
 */
 
 import Route from '@ioc:Adonis/Core/Route'
+import "./routes/user/login"
 
 Route.get('/', async ({ view }) => {
-  return view.render('welcome')
+  return view.render('home')
+})
+
+Route.get('/home', async ({ view }) => {
+  return view.render('dashboard')
 })

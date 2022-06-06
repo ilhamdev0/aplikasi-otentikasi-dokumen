@@ -1,0 +1,28 @@
+@layout('layouts/base')
+@set('title', 'Admin')
+
+@section('navbar')
+<nav class="navbar navbar-expand-md navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            <img src="/doc.svg" alt="" height="64">
+        </a>
+        
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu-atas" aria-controls="menu-atas" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="menu-atas">
+            <div class="navbar-nav">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                <a class="nav-link" href="/ds">Digital Signature</a>
+                <a class="nav-link" href="/cek">Validasi Digital Signature</a>
+            </div>
+        </div>
+    </div>
+</nav>
+@end
+
+@section('body')
+  box summary
+@end

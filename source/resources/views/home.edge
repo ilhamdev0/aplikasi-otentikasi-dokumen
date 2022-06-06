@@ -1,0 +1,46 @@
+@layout('layouts/base')
+@set('title', 'Home')
+
+@section('navbar')
+@end
+
+@section('body')
+<section>
+    <div>
+        <div class="text-center my-5">
+            <img src="/doc.svg" alt="logo" width="100">
+        </div>
+        <div class="card login-card shadow-lg">
+            <div class="card-body p-5">
+                <h1 class="fs-4 card-title fw-bold mb-4">Login</h1>
+
+                <form action="/login" method="POST" class="needs-validation" novalidate="" autocomplete="off">
+                    <div class="row flex-column gy-4">
+                        <div class="col">
+                            <label for="nama" class="mb-2 text-muted">Username</label>
+                            <input id="nama" type="text" class="form-control" name="nama" value="" required autofocus>
+                            <div class="invalid-feedback">
+                                Username is invalid
+                            </div>
+                        </div>
+    
+                        <div class="col">
+                            <label for="password" class="mb-2 text-muted">Password</label>
+                            <input id="password" type="password" class="form-control" name="password" required>
+                            <div class="invalid-feedback">
+                                Password is required
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-end">
+                            <button type="submit" class="btn btn-primary">
+                                Login
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+@end
