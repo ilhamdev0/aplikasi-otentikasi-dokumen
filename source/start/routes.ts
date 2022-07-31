@@ -20,6 +20,7 @@
 
 import Route from '@ioc:Adonis/Core/Route'
 import "./routes/user/login"
+import "./routes/digisign/main"
 
 Route.get('/', async ({ view }) => {
     // todo :: jika sudah login maka alihkan ke route dashboard

@@ -1,0 +1,68 @@
+@layout('layouts/base')
+@set('title', 'Digital Signature')
+
+@section('navbar')
+<nav class="navbar navbar-expand-md navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            <img src="/doc.svg" alt="" height="64">
+        </a>
+        
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu-atas" aria-controls="menu-atas" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="menu-atas">
+            <div class="navbar-nav">
+                <a class="nav-link" href="/">Beranda</a>
+                <a class="nav-link active" aria-current="page" href="#">Digital Signature</a>
+                <a class="nav-link" href="/newdoc">Buat Pengesahan Dokumen</a>
+                <a class="nav-link" href="/cek">Validasi Dokumen</a>
+            </div>
+        </div>
+    </div>
+</nav>
+@end
+
+@section('body')
+<h3 class="py-2">Kelola Digital Signature</h3>
+
+<div class="flex-right pb-4">
+    <a href="/digisign/new"><button type="button" class="btn btn-success">Buat Digital Signature</button></a>
+</div>
+
+<table class="table table-hover align-middle">
+    <thead class="table-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Label</th>
+        <th scope="col">Signature</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody class="table-group-divider">
+      <tr>
+        <th scope="row">1</th>
+        <td>Sertifikat Webinar</td>
+        <td>sign123xyz</td>
+        <td>
+            <div class="row g-2 justify-content-start">
+                <div class="col-sm-6 col-md-4 col-xl-3 col-xxl-2"><button type="button" class="btn btn-primary">Info</button></div>
+                <div class="col-sm-6 col-md-8 col-xl-9 col-xxl-10"><button type="button" class="btn btn-danger">hapus</button></div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>Surat Penting</td>
+        <td>signabc123xyz</td>
+        <td>
+            <div class="row g-2 justify-content-start">
+                <div class="col-sm-6 col-md-4 col-xl-3 col-xxl-2"><button type="button" class="btn btn-primary">Info</button></div>
+                <div class="col-sm-6 col-md-8 col-xl-9 col-xxl-10"><button type="button" class="btn btn-danger">hapus</button></div>
+            </div>
+        </td>
+      </tr>
+    </tbody>
+</table>
+@end
