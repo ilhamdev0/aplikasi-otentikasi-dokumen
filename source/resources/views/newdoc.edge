@@ -1,0 +1,37 @@
+@layout('layouts/base')
+@set('title', 'Pengesahan Dokumen')
+
+@section('navbar')
+@end
+
+@section('body')
+<div class="form-wrapper">
+    <p>todo :: logic Pengesahan dokumen</p>
+    <a class="back-link" href="/"><i class="bi bi-arrow-left-circle"></i></a>
+    <h3 class="py-2">Buat Pengesahan Dokumen Baru</h3>
+    <form class="py-4" method="POST" action="/newdoc">
+        <div class="mb-3">
+          <label for="label" class="form-label">Label</label>
+          <input type="text" class="form-control" id="label" aria-describedby="labelHelp">
+          <div id="labelHelp" class="form-text">Digital Signature akan dipergunakan sebagai</div>
+        </div>
+        <div class="mb-3">
+          <label for="nama" class="form-label">Nama</label>
+          <input type="text" class="form-control" id="nama" aria-describedby="namaHelp">
+          <div id="namaHelp" class="form-text">Digital Signature atas nama</div>
+        </div>
+        <div class="mb-3">
+          <label for="kode" class="form-label">Kode</label>
+          <input type="text" class="form-control" id="kode" aria-describedby="kodeHelp">
+          <div id="kodeHelp" class="form-text">Teks ini akan disisipkan ke dalam Digital Signature</div>
+        </div>
+        <div class="mb-3">
+          <label for="timestamp" class="form-label">Timestamp</label>
+          <input class="form-control" type="text" id="timestamp" placeholder="timestamp" aria-label="tidak bisa diedit" disabled>
+        </div>
+        <div class="flex-right">
+            <button type="submit" class="btn btn-primary">Upload</button>
+        </div>
+      </form>
+</div>
+@end
