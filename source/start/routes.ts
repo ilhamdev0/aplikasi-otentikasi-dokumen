@@ -22,7 +22,8 @@ import Route from '@ioc:Adonis/Core/Route'
 import "./routes/user/login"
 
 Route.get('/', async ({ view }) => {
-  return view.render('home')
+    // todo :: jika sudah login maka alihkan ke route dashboard
+    return view.render('login')
 })
 
 Route.get('/home', async ({ view }) => {

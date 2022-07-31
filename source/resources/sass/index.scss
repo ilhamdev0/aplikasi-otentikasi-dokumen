@@ -1,9 +1,37 @@
 // Include any default variable overrides here (though functions won't be available)
 
 @import "../../node_modules/bootstrap/scss/bootstrap";
+@import "../../node_modules/bootstrap-icons/font/bootstrap-icons";
+@import "./utilities";
 
 // Then add additional custom code here
+main{
+    padding: 1rem 1.5rem;
+}
+
 .login-card{
     width: 25rem;
     margin: 0 auto;
+}
+
+.dashboard-card{
+    height: 100%;
+
+    .card-footer p {
+        text-align: right;
+        margin: 0;
+    }
+
+    .card-footer p a i {
+        font-size: 2.5rem;
+    }
+}
+
+.back-link i{
+    font-size: 2.5rem;
+    color: crimson;
+}
+
+.form-wrapper{
+    padding: 4rem;
 }
