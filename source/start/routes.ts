@@ -19,8 +19,12 @@
 */
 
 import Route from '@ioc:Adonis/Core/Route'
+
+// Custom Route
 import "./routes/user/login"
 import "./routes/digisign/main"
+import "./routes/newdoc/main"
+import "./routes/valdoc/main"
 
 Route.get('/', async ({ view }) => {
     // todo :: jika sudah login maka alihkan ke route dashboard

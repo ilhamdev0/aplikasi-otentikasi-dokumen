@@ -1,0 +1,23 @@
+@layout('layouts/base')
+@set('title', 'Validasi Dokumen')
+
+@section('navbar')
+@end
+
+@section('body')
+<div class="form-wrapper">
+    <p>todo :: logic Validasi dokumen</p>
+    <a class="back-link" href="/"><i class="bi bi-arrow-left-circle"></i></a>
+    <h3 class="py-2">Validasi Dokumen</h3>
+    <form class="py-4" method="POST" action="/valdoc">
+        <div class="mb-3">
+            <label for="dokumen" class="form-label">Upload Dokumen</label>
+            <input class="form-control" type="file" id="dokumen" aria-describedby="uploadHelp" multiple>
+            <div id="uploadHelp" class="form-text pt-2">Dokumen yang diupload akan dicek oleh sistem</div>
+        </div>
+        <div class="flex-right">
+            <button type="submit" class="btn btn-primary">Upload</button>
+        </div>
+      </form>
+</div>
+@end
