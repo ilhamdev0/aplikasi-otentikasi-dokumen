@@ -18,8 +18,10 @@ up:
 down:
 	@docker-compose down
 	@systemctl stop docker
-websrv:
-	@docker exec -it -u $(shell id -u) "webserver" /bin/bash
+shell:
+	@docker exec -it nodejs ash
+resetdb:
+	@docker exec nodejs node ace migration:fresh --seed
 
 help:
 	@echo "Warning: Hanya dikhususkan untuk kebutuhan development saja"
@@ -30,5 +32,6 @@ help:
 	@echo " make up		: Mengaktifkan seluruh container"
 	@echo " make down		: Menonaktifkan seluruh container"
 	@echo " make env		: Generate file .env"
-	@echo " make websrv		: Masuk ke terminal container 'webserver'"
+	@echo " make shell		: Masuk ke terminal container 'webserver'"
+	@echo " make resetdb		: Mengembalikan database ke kondisi awal"
 	
