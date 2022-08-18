@@ -4,10 +4,8 @@ Route.get('/digisign', async ({ view }) => {
     return view.render('digisign/main')
 })
 
-Route.get('/digisign/new', async ({ view }) => {
-    return view.render('digisign/new')
+Route.get('/digisign/newform', async ({ view }) => {
+    return view.render('digisign/newform')
 })
 
-Route.post('/digisign/new', async ({ request }) => {
-    return "logic new digisign"
-})
+Route.post('/digisign/new', 'DigisignsController.newdigisign')

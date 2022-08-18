@@ -9,25 +9,25 @@
     <p>todo :: logic new digisign</p>
     <a class="back-link" href="/digisign"><i class="bi bi-arrow-left-circle"></i></a>
     <h3 class="py-2">Buat Digital Signature</h3>
-    <form class="py-4" method="POST" action="/digisign/new">
+    <form class="py-4" method="POST" action="{{ route('DigisignsController.newdigisign') }}">
         <div class="mb-3">
           <label for="label" class="form-label">Label</label>
-          <input type="text" class="form-control" id="label" aria-describedby="labelHelp">
+          <input type="text" class="form-control" name="label" id="label" aria-describedby="labelHelp">
           <div id="labelHelp" class="form-text">Digital Signature akan dipergunakan sebagai</div>
         </div>
         <div class="mb-3">
           <label for="nama" class="form-label">Nama</label>
-          <input type="text" class="form-control" id="nama" aria-describedby="namaHelp">
+          <input type="text" class="form-control" name="nama" id="nama" value="ilham" aria-describedby="namaHelp" readonly>
           <div id="namaHelp" class="form-text">Digital Signature atas nama</div>
         </div>
         <div class="mb-3">
-          <label for="kode" class="form-label">Kode</label>
-          <input type="text" class="form-control" id="kode" aria-describedby="kodeHelp">
-          <div id="kodeHelp" class="form-text">Teks ini akan disisipkan ke dalam Digital Signature</div>
+          <label for="kode" class="form-label">Kode Unik</label>
+          <input type="text" class="form-control" name="kode" id="kode" aria-describedby="kodeHelp">
+          <div id="kodeHelp" class="form-text">Kode unik akan disisipkan ke dalam Digital Signature</div>
         </div>
         <div class="mb-3">
           <label for="timestamp" class="form-label">Timestamp</label>
-          <input class="form-control" type="text" id="timestamp" placeholder="timestamp" aria-label="tidak bisa diedit" disabled>
+          <input class="form-control" type="text" name="timestamp" id="timestamp" placeholder="timestamp" value="{{new Date().getTime();}}" aria-label="tidak bisa diedit" readonly>
         </div>
         <div class="flex-right">
             <button type="submit" class="btn btn-primary">Submit</button>
