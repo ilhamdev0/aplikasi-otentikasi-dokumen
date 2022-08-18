@@ -20,8 +20,11 @@
 
 import Route from '@ioc:Adonis/Core/Route'
 
+//Debug Route
+import "./routes/debug/main"
+
 // Custom Route
-import "./routes/user/login"
+import "./routes/user/auth"
 import "./routes/digisign/main"
 import "./routes/newdoc/main"
 import "./routes/valdoc/main"
