@@ -55,15 +55,8 @@ export default class UserController {
             response.badRequest(error.messages)
         }
 
-        const username = request.input('username')
-        const password = request.input('password')
-
-        try {
-            await auth.use('web').attempt(username, password)
-            response.redirect('/home')
-        } catch {
-            return response.badRequest('Invalid credentials')
-            //todo :: redirect kembali ke login form
-        }
+    public async logout({ response, auth }: HttpContextContract) {
+        await auth.use('web').logout()
+        response.redirect().toPath('/')
     }
 }

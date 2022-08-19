@@ -5,4 +5,6 @@ Route.get('/register', async ({ view }) => {
 })
 
 Route.post('/register','UserController.register')
+
 Route.post('/login','UserController.login')
+Route.get('/logout','UserController.logout')
