@@ -37,4 +37,4 @@ Route.get('/', async ({ view }) => {
 Route.get('/home', async ({ view }) => {
     // todo :: jika belum login maka alihkan ke route login
     return view.render('dashboard')
-})
+}).middleware(['auth'])
