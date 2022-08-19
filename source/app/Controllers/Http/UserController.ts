@@ -6,7 +6,8 @@ export default class UserController {
     public async register({ request, response }: HttpContextContract) {
         const skema = schema.create({
             username: schema.string({}, [
-                rules.maxLength(128)
+                rules.maxLength(128),
+                rules.unique({ table: 'users', column: 'username' })
             ]),
             password: schema.string({}, [
                 rules.minLength(6)
@@ -19,6 +20,7 @@ export default class UserController {
                 messages: {
                     'required': 'Kolom {{ field }} harus diisi',
                     'username.maxLength': 'Username terlalu panjang',
+                    'username.unique': 'Username sudah ada. Coba nama lain!',
                     'password.minLength': 'Password minimal {{ options.minLength}} karakter'
                 }
             })
@@ -62,7 +64,7 @@ export default class UserController {
                 response.redirect().toPath('/')
                 //todo :: tampilkan pesan bahwa login gagal
             }
-            
+
         } catch (error) {
             response.badRequest(error.messages)
         }
