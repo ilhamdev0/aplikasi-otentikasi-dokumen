@@ -24,8 +24,8 @@ export default class UserController {
             })
 
             // jika data valid, buat akun baru
-            const akun = await User.create(data)
-            response.redirect('/')
+            await User.create(data)
+            response.redirect().toPath('/')
 
         } catch (error) {
             response.badRequest(error.messages)
@@ -51,9 +51,22 @@ export default class UserController {
                     'password.minLength': 'Password minimal {{ options.minLength}} karakter'
                 }
             })
+
+            const username = request.input('username')
+            const password = request.input('password')
+
+            try {
+                await auth.use('web').attempt(username, password)
+                response.redirect().toPath('/home')
+            } catch {
+                response.redirect().toPath('/')
+                //todo :: tampilkan pesan bahwa login gagal
+            }
+            
         } catch (error) {
             response.badRequest(error.messages)
         }
+    }
 
     public async logout({ response, auth }: HttpContextContract) {
         await auth.use('web').logout()
