@@ -14,10 +14,11 @@
 
         <div class="collapse navbar-collapse" id="menu-atas">
             <div class="navbar-nav">
-                <a class="nav-link" href="/">Beranda</a>
+                <a class="nav-link" href="/home">Beranda</a>
                 <a class="nav-link active" aria-current="page" href="#">Digital Signature</a>
                 <a class="nav-link" href="/newdoc">Buat Pengesahan Dokumen</a>
                 <a class="nav-link" href="/valdoc">Validasi Dokumen</a>
+                <a class="nav-link logout" href="/logout">Logout<i class="bi bi-box-arrow-left"></i></a>
             </div>
         </div>
     </div>
@@ -28,7 +29,7 @@
 <h3 class="py-2">Kelola Digital Signature</h3>
 
 <div class="flex-right pb-4">
-    <a href={{ route('DigisignsController.index') }}><button type="button" class="btn btn-success">Buat Digital Signature</button></a>
+    <a href="/digisign/createform"><button type="button" class="btn btn-success">Buat Digital Signature</button></a>
 </div>
 
 <table class="table table-hover align-middle">
