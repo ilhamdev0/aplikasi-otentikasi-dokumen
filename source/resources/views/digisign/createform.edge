@@ -6,19 +6,18 @@
 
 @section('body')
 <div class="form-wrapper">
-    <p>todo :: logic new digisign</p>
     <a class="back-link" href="/digisign"><i class="bi bi-arrow-left-circle"></i></a>
     <h3 class="py-2">Buat Digital Signature</h3>
     <form class="py-4" method="POST" action="{{ route('DigisignsController.create') }}">
         <div class="mb-3">
           <label for="label" class="form-label">Label</label>
           <input type="text" class="form-control" name="label" id="label" aria-describedby="labelHelp">
-          <div id="labelHelp" class="form-text">Digital Signature akan dipergunakan sebagai</div>
+          <div id="labelHelp" class="form-text"></div>
         </div>
         <div class="mb-3">
           <label for="nama" class="form-label">Nama</label>
-          <input type="text" class="form-control" name="nama" id="nama" value="ilham" aria-describedby="namaHelp" readonly>
-          <div id="namaHelp" class="form-text">Digital Signature atas nama</div>
+          <input type="text" class="form-control" id="nama" value="{{session.get('username')}}" aria-describedby="namaHelp" readonly>
+          <div id="namaHelp" class="form-text"></div>
         </div>
         <div class="mb-3">
           <label for="kode" class="form-label">Kode Unik</label>
