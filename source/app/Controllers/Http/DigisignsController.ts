@@ -6,12 +6,22 @@ import User from 'App/Models/User'
 import Digisign from 'App/Models/Digisign'
 
 export default class DigisignsController {
+    public async index({ view, response, session }: HttpContextContract) {
+        //load seluruh digisign yang telah dibuat oleh user
+        const username = session.get('username')
+        const db = await User.findBy('username', username)
+        await db?.load('digisigns')
+        const obj = {data: db?.digisigns}
+
+        return view.render('digisign/main',obj)
+    }
+
     public async create({ request, response, session }: HttpContextContract) {
         //ambil data dari form dan session lalu ubah ke satu teks tunggal
         const form = request.body()
         const username = session.get('username')
         delete form['label']
-        const merge = {username, ...form}
+        const merge = { username, ...form }
         const input = objtotext(merge)
 
         // load label
@@ -23,7 +33,7 @@ export default class DigisignsController {
         const userid = db?.id
 
         //encrypt input
-        const digisign = encrypt(input,privatekey)
+        const digisign = encrypt(input, privatekey)
 
         //buat hash dari digital signature
         const digest = hash(digisign)
