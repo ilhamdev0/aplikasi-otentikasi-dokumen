@@ -59,6 +59,7 @@ export default class UserController {
 
             try {
                 await auth.use('web').attempt(username, password)
+                session.put('username', username)
                 response.redirect().toPath('/home')
             } catch {
                 response.redirect().toPath('/')

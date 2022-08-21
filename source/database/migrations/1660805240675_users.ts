@@ -1,24 +1,25 @@
 import BaseSchema from '@ioc:Adonis/Lucid/Schema'
 
 export default class UsersSchema extends BaseSchema {
-  protected tableName = 'users'
+    protected tableName = 'users'
 
-  public async up() {
-    this.schema.createTable(this.tableName, (table) => {
-      table.string('id', 36).primary()
-      table.string('username', 128).notNullable()
-      table.string('password', 100).notNullable()
-      table.string('remember_me_token').nullable()
+    public async up() {
+        this.schema.createTable(this.tableName, (table) => {
+            table.uuid('id').primary()
+            table.string('username', 128).notNullable().unique()
+            table.string('password', 100).notNullable()
+            table.string('privatekey', 1800).notNullable()
+            table.string('remember_me_token').nullable()
 
-      /**
-       * Uses timestampz for PostgreSQL and DATETIME2 for MSSQL
-       */
-      table.timestamp('created_at', { useTz: true }).notNullable()
-      table.timestamp('updated_at', { useTz: true }).notNullable()
-    })
-  }
+            /**
+             * Uses timestampz for PostgreSQL and DATETIME2 for MSSQL
+             */
+            table.timestamp('created_at', { useTz: true }).notNullable()
+            table.timestamp('updated_at', { useTz: true }).notNullable()
+        })
+    }
 
-  public async down() {
-    this.schema.dropTable(this.tableName)
-  }
+    public async down() {
+        this.schema.dropTable(this.tableName)
+    }
 }
