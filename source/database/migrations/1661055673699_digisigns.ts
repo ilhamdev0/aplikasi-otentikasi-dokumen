@@ -12,7 +12,7 @@ export default class extends BaseSchema {
                 .onDelete('CASCADE')
                 .notNullable()
             table.text('label').notNullable()
-            table.string('data', 344).notNullable()
+            table.string('signature', 344).notNullable()
             table.string('hash', 60).notNullable()
 
             /**

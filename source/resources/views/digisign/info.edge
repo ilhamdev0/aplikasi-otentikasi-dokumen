@@ -1,0 +1,28 @@
+@layout('layouts/base')
+@set('title', `${data.label} - Digital Signature`)
+
+@section('navbar')
+@end
+
+@section('body')
+<div class="form-wrapper">
+    <a class="back-link" href="/digisign"><i class="bi bi-arrow-left-circle"></i></a>
+    <h3 class="py-2">{{data.label}}</h3>
+    <form class="py-4 form-info">
+        <div class="mb-3">
+            <label for="qrcode" class="form-label">QRCode</label>
+            <div class="qrcode">
+                {{{data.qrcode}}}
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="signature" class="form-label">Signature</label>
+            <textarea class="form-control" id="signature" rows="6" readonly>{{data.signature}}</textarea>
+        </div>
+        <div class="mb-3">
+            <label for="hash" class="form-label">Hash</label>
+            <textarea class="form-control" id="hash" rows="3" readonly>{{data.hash}}</textarea>
+        </div>
+    </form>
+</div>
+@end

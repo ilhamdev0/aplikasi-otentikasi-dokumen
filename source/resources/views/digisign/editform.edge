@@ -1,5 +1,5 @@
 @layout('layouts/base')
-@set('title', 'Buat Digital Signature')
+@set('title', 'Edit Digital Signature')
 
 @section('navbar')
 @end
@@ -7,30 +7,30 @@
 @section('body')
 <div class="form-wrapper">
     <a class="back-link" href="/digisign"><i class="bi bi-arrow-left-circle"></i></a>
-    <h3 class="py-2">Buat Digital Signature</h3>
-    <form class="py-4" method="POST" action="{{ route('DigisignsController.create') }}">
+    <h3 class="py-2">Edit Digital Signature</h3>
+    <form class="py-4" method="POST" action="{{ route('DigisignsController.update') }}">
         <div class="mb-3">
           <label for="label" class="form-label">Label</label>
-          <input type="text" class="form-control" name="label" id="label" aria-describedby="labelHelp">
+          <input type="text" class="form-control" name="label" id="label" value="{{data.label}}" aria-describedby="labelHelp">
           <div id="labelHelp" class="form-text"></div>
         </div>
         {{--  not submitted  --}}
         <div class="mb-3">
           <label for="nama" class="form-label">Nama</label>
-          <input type="text" class="form-control" id="nama" value="{{session.get('username')}}" aria-describedby="namaHelp" readonly>
+          <input type="text" class="form-control" id="nama" value="{{data.username}}" aria-describedby="namaHelp" readonly>
           <div id="namaHelp" class="form-text"></div>
         </div>
         <div class="mb-3">
           <label for="kode" class="form-label">Kode Unik</label>
-          <input type="text" class="form-control" name="kode" id="kode" aria-describedby="kodeHelp">
+          <input type="text" class="form-control" name="kode" id="kode" value="{{data.kode}}" aria-describedby="kodeHelp">
           <div id="kodeHelp" class="form-text">Kode unik akan disisipkan ke dalam Digital Signature</div>
         </div>
-        {{--  not submitted  --}}
         <div class="mb-3">
           <label for="timestamp" class="form-label">Timestamp</label>
-          <input class="form-control" type="text" id="timestamp" placeholder="timestamp" value="{{new Date().getTime()}}" readonly>
+          <input class="form-control" type="text" name="timestamp" id="timestamp" placeholder="timestamp" value="{{data.timestamp}}" readonly>
         </div>
         <div class="flex-right">
+            <input type="hidden" name="id" value="{{data.id}}">
             <button type="submit" class="btn btn-primary">Submit</button>
         </div>
       </form>

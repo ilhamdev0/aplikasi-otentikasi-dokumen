@@ -15,7 +15,7 @@ export default class Digisign extends BaseModel {
     public label: string
 
     @column()
-    public data: string
+    public signature: string
 
     @column()
     public hash: string

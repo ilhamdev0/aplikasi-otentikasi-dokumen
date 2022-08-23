@@ -29,34 +29,51 @@
 <h3 class="py-2">Kelola Digital Signature</h3>
 
 <div class="flex-right pb-4">
-    <a href="/digisign/createform"><button type="button" class="btn btn-success">Buat Digital Signature</button></a>
+    <form method="GET" action="/digisign/createform">
+        <button type="submit" class="btn btn-secondary"><i class="bi bi-plus-square-fill"></i></button>
+    </form>
 </div>
 
-<table class="table table-hover align-middle">
-    <thead class="table-dark">
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Label</th>
-        <th scope="col">Signature (Preview)</th>
-        <th scope="col">Hash (Preview)</th>
-        <th scope="col"></th>
-      </tr>
-    </thead>
-    <tbody class="table-group-divider">
-        @each((v, index) in data)
-            <tr>
-            <th scope="row">{{ index+1 }}</th>
-            <td>{{v.label}}</td>
-            <td>{{v.data.slice(0, 16) + "..."}}</td>
-            <td>{{v.hash.slice(0, 16) + "..."}}</td>
-            <td>
-                <div class="row g-2 justify-content-start">
-                    <div class="col-sm-6 col-md-4 col-xl-3 col-xxl-2"><button type="button" class="btn btn-primary">Info</button></div>
-                    <div class="col-sm-6 col-md-8 col-xl-9 col-xxl-10"><button type="button" class="btn btn-danger">hapus</button></div>
-                </div>
-            </td>
-            </tr>
-        @end
-    </tbody>
-</table>
+<div class="overflow-auto">
+    <table class="table table-hover align-middle">
+        <thead class="table-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Label</th>
+            <th scope="col">Signature (Preview)</th>
+            <th scope="col">Hash (Preview)</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody class="table-group-divider">
+            @each((v, index) in data)
+                <tr>
+                <th scope="row">{{ index+1 }}</th>
+                <td>{{v.label}}</td>
+                <td>{{v.signature.slice(0, 20) + "..."}}</td>
+                <td>{{v.hash.slice(0, 20) + "..."}}</td>
+                <td>
+                    <div class="row g-2">
+                        <div class="col crud-button">
+                            <form method="GET" action="/digisign/info/{{v.id}}">
+                                <button type="submit" class="btn btn-primary"><i class="bi bi-info-square-fill"></i></button>
+                            </form>
+                        </div>
+                        <div class="col crud-button">
+                            <form method="POST" action="{{ route('DigisignsController.edit') }}">
+                                <button type="submit" class="btn btn-success" name="id" value="{{v.id}}"><i class="bi bi-pencil-square"></i></button>
+                            </form> 
+                        </div>
+                        <div class="col crud-button">
+                            <form method="POST" action="{{ route('DigisignsController.delete') }}" onsubmit="return confirm(`Hapus {{v.label}} dari daftar digital signature?`)">
+                                <button type="submit" class="btn btn-danger" name="id" value="{{v.id}}"><i class="bi bi-trash-fill"></i></button>
+                            </form>
+                        </div>
+                    </div>
+                </td>
+                </tr>
+            @end
+        </tbody>
+    </table>
+</div>
 @end
