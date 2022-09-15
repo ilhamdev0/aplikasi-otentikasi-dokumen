@@ -1,0 +1,61 @@
+@layout('layouts/base')
+@set('title', 'Pengesahan Dokumen')
+
+@section('navbar')
+@end
+
+@section('body')
+<div class="form-wrapper">
+    <div class="nav-arrow-wrapper">
+        <a class="back-link" href="/pengesahan/digisign"><i class="bi bi-arrow-left-circle"></i></a>
+    </div>
+    <h3 class="py-2">Editor</h3>
+
+    <form class="py-4" method="POST" action="{{ route('DocumentsController.editor') }}">
+        <div class="row mb-3">
+            <div class="col vertical-slider">
+                @if(y_pos)
+                    <input type="range" orient="vertical" class="form-range" name="y" id="y" value="{{y_pos}}">
+                @else
+                    <input type="range" orient="vertical" class="form-range" name="y" id="y" value="0">
+                @end
+            </div>
+            <div class="col">
+                <iframe src="/{{url}}#view=fitH" class="previewpdf" width="100%" height= "100%"></iframe>
+            </div>
+        </div>
+        <div class="horizontal-slider">
+            @if(x_pos)
+                <input type="range" class="form-range" name="x" id="x" value="{{x_pos}}">
+            @else
+                <input type="range" class="form-range" name="x" id="x" value="0">
+            @end
+        </div>
+        <hr>
+        <div class="mb-3">
+            <label for="halaman" class="form-label">Halaman</label>
+            @if(halaman)
+                <input type="number" class="form-control" name="halaman" id="halaman" value="{{halaman}}" aria-describedby="halamanHelp">
+            @else
+                <input type="number" class="form-control" name="halaman" id="halaman" value="1" aria-describedby="halamanHelp">
+            @end
+            <div id="halamanHelp" class="form-text">Sisipkan digital signature pada halaman ini</div>
+        </div>
+        <div class="mb-3">
+            <label for="ukuran" class="form-label">Ukuran Digital Signature</label>
+            @if(ukuranQR)
+                <input type="range" class="form-range" name="ukuran" id="ukuran" min="0" max="1" step="0.1" value="{{ukuranQR}}">
+            @else
+                <input type="range" class="form-range" name="ukuran" id="ukuran" min="0" max="1" step="0.1" value="0.5">
+            @end
+            <div class="row ukuran-label">
+                <div class="col form-text">Kecil</div>
+                <div class="col form-text">Besar</div>
+            </div>
+        </div>
+        <div class="flex-right">
+            <button type="submit" class="btn btn-primary">Update</button>
+        </div>
+    </form>
+</div>
+@end

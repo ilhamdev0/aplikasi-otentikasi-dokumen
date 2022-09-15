@@ -26,7 +26,7 @@ import "./routes/debug/main"
 // Custom Route
 import "./routes/user/auth"
 import "./routes/digisign/main"
-import "./routes/newdoc/main"
+import "./routes/pengesahan/main"
 import "./routes/valdoc/main"
 
 Route.get('/', async ({ view }) => {

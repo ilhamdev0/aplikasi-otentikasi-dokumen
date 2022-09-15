@@ -1,0 +1,50 @@
+@layout('layouts/base')
+@set('title', 'Pengesahan Dokumen')
+
+@section('navbar')
+@end
+
+@section('body')
+<div class="form-wrapper">
+    <div class="nav-arrow-wrapper">
+        <a class="back-link" href="/home"><i class="bi bi-arrow-left-circle"></i></a>
+        @if(data)  
+        <a class="forward-link" href="/pengesahan/digisign"><i class="bi bi-arrow-right-circle"></i></a>
+        @endif
+    </div>
+    <h3 class="py-2">Upload Dokumen</h3>
+    <form class="py-4" method="POST" enctype="multipart/form-data" action="{{ route('DocumentsController.addfile') }}">
+        <div class="mb-3">
+            <label for="dokumen" class="form-label">File maks. 50MB</label>
+            <input class="form-control" type="file" accept=".pdf" name="dokumen" id="dokumen" multiple>
+        </div>
+        <div class="flex-right">
+            <button type="submit" class="btn btn-primary">Upload</button>
+        </div>
+    </form>
+
+    @if(data)
+    <h4 class="py-2">File yang telah diupload</h4>
+    <div class="overflow-auto">
+        <table class="table table-hover align-middle">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">File</th>
+                    <th scope="col">Ukuran</th>
+                </tr>
+            </thead>
+            <tbody class="table-group-divider">
+                @each((file, index) in data)
+                <tr>
+                    <th scope="row">{{ index+1 }}</th>
+                    <td>{{file.nama}}</td>
+                    <td>{{file.ukuran}}</td>
+                </tr>
+                @end
+            </tbody>
+        </table>
+    </div>
+    @end
+</div>
+@end
