@@ -28,6 +28,7 @@ export default class UserController {
             // jika data valid, buat akun baru
             await User.create(data)
             response.redirect().toPath('/')
+            //todo :: tampilkan pesan bahwa akun berhasil dibuat
 
         } catch (error) {
             response.badRequest(error.messages)
